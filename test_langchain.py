@@ -6,6 +6,9 @@ from langchain_openai.chat_models import ChatOpenAI
 from langchain_community.document_loaders import TextLoader
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
+from dotenv import load_dotenv
+
+load_dotenv()
 
 embedding = OpenAIEmbeddings(model="text-embedding-ada-002")
 loader = TextLoader("state_of_the_union.txt")
@@ -24,4 +27,3 @@ questions = [
 for query in questions:
     print("Query:", query)
     print("Answer:", index.query(query, llm=llm))
-    
